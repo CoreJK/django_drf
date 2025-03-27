@@ -7,11 +7,12 @@ from user_info.serializers import UserDescSerializer
 class ArticleListSerializer(serializers.ModelSerializer):
     
     author = UserDescSerializer(read_only=True)
-    
+    url = serializers.HyperlinkedIdentityField(view_name="article:detail")
     class Meta:
         model = Article
         fields = [
-            'id',
+            # 'id',
+            'url',
             'author',
             'title',
             'content',
